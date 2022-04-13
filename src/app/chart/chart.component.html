@@ -1,11 +1,31 @@
 <div class="row">
   <div class="col-md-4">
     <div class="card">
-      <div style="display: block">
+      <div class="card-header">
+          CAS RT
+      </div>
+      <div style="display: block" class="card-body">
         <canvas baseChart
                 [data]="pieChartData"
                 [labels]="pieChartLabels"
                 [chartType]="pieChartType"
+                [colors]="colors"
+                (chartClick)="chartClicked($event)"
+                (chartHover)="chartHovered($event)"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-header">
+        CAS BULK
+    </div>
+      <div style="display: block" class="card-body">
+        <canvas baseChart
+                [data]="pieChartData"
+                [labels]="pieChartLabels"
+                [chartType]="pieChartType"
+                [colors]="colors"
                 (chartClick)="chartClicked($event)"
                 (chartHover)="chartHovered($event)"></canvas>
       </div>
@@ -18,18 +38,7 @@
                 [data]="pieChartData"
                 [labels]="pieChartLabels"
                 [chartType]="pieChartType"
-                (chartClick)="chartClicked($event)"
-                (chartHover)="chartHovered($event)"></canvas>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="card">
-      <div style="display: block">
-        <canvas baseChart
-                [data]="pieChartData"
-                [labels]="pieChartLabels"
-                [chartType]="pieChartType"
+                [colors]="colors"
                 (chartClick)="chartClicked($event)"
                 (chartHover)="chartHovered($event)">
         </canvas>

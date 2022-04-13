@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Color } from 'ng2-charts';
 
 @Component({
   selector: 'app-chart',
@@ -8,10 +10,18 @@ import { Router } from '@angular/router';
 })
 export class ChartComponent implements OnInit {
 
-  constructor(private router: Router) {
+  public dataJson: any;
+
+  constructor(private router: Router,
+              private http: HttpClient) {
   }
 
   ngOnInit() {
+
+    this.http.get<any>('https://webhook.site/3e362daa-2370-44fd-9f62-d5a264427143').subscribe(data => {
+    this.dataJson = data;
+  })  
+
   }
 
 

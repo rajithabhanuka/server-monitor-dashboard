@@ -1,3 +1,170 @@
-<p>
-  table-view works!
-</p>
+<!-- <div *ngFor="let item of map1 | keyvalue">
+  Key: <b>{{item.key}}</b> and Value: <b>{{item.value}}</b>
+</div> -->
+
+<!-- <div class="row">
+  <div class="col-lg-10">
+    <div class="card">
+      <div class="card-header">
+        <i class="fa fa-align-justify"></i> Simple Table
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Component</th>
+            <th>Status</th>
+            <th>Sub Components</th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr class="test" *ngFor="let item of map1 | keyvalue">
+              <td>{{ item.key }}</td>
+              <td>{{ item.value.status }}</td>
+              <td>
+                <ul class="list-group">
+                  <li class="list-group-item">{{ item.value.details}}</li>
+                  <li class="list-group-item">A second item</li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        <i class="fa fa-align-justify"></i> Simple Table
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Component</th>
+              <th>Status</th>
+              <th>Sub Components</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="test">
+              <td>file-system</td>
+              <td [ngClass]="{
+                'text-success': fileSystem.status == 'up', 
+                'text-danger': fileSystem.status == 'down' || fileSystem.status == 'out_of_service',
+                'text-secondary': fileSystem.status == 'suspended',
+                'text-warning': fileSystem.status == 'partial',
+                'text-muted': fileSystem.status == 'unknown'}">{{ fileSystem.status }}</td>
+              <td>
+                <table>
+                  <tr>
+                    <td>file-system-local</td>
+                    <td [ngClass]="{
+                      'text-success': fileSystemLocal.status == 'up', 
+                      'text-danger': fileSystemLocal.status == 'down' || fileSystemLocal.status == 'out_of_service',
+                      'text-secondary': fileSystemLocal.status == 'suspended',
+                      'text-warning': fileSystemLocal.status == 'partial',
+                      'text-muted': fileSystemLocal.status == 'unknown'}">{{fileSystemLocal.status}}</td>
+                  </tr>
+                  <tr>
+                    <td>file-system-remote</td>
+                    <td [ngClass]="{
+                      'text-success': fileSystemRemote.status == 'up', 
+                      'text-danger': fileSystemRemote.status == 'down' || fileSystemRemote.status == 'out_of_service',
+                      'text-secondary': fileSystemRemote.status == 'suspended',
+                      'text-warning': fileSystemRemote.status == 'partial',
+                      'text-muted': fileSystemRemote.status == 'unknown'}">{{fileSystemRemote.status}}</td>
+                  </tr>
+                </table>
+              </td>
+            <tr class="test">
+              <td>oracle</td>
+              <td [ngClass]="{
+                'text-success': oracle.status == 'up', 
+                'text-danger': oracle.status == 'down' || oracle.status == 'out_of_service',
+                'text-secondary': oracle.status == 'suspended',
+                'text-warning': oracle.status == 'partial',
+                'text-muted': oracle.status == 'unknown'}">{{ oracle.status }}</td>
+              <td>
+                <table>
+                  <tr>
+                    <td>oracle-rw</td>
+                    <td [ngClass]="{
+                      'text-success': oracleRw.status == 'up', 
+                      'text-danger': oracleRw.status == 'down' || oracleRw.status == 'out_of_service',
+                      'text-secondary': oracleRw.status == 'suspended',
+                      'text-warning': oracleRw.status == 'partial',
+                      'text-muted': oracleRw.status == 'unknown'}">{{oracleRw.status}}</td>
+                  </tr>
+                  <tr>
+                    <td>oracle-ro</td>
+                    <td [ngClass]="{
+                      'text-success': oracleRo.status == 'up', 
+                      'text-danger': oracleRo.status == 'down' || oracleRo.status == 'out_of_service',
+                      'text-secondary': oracleRo.status == 'suspended',
+                      'text-warning': oracleRo.status == 'partial',
+                      'text-muted': oracleRo.status == 'unknown'}">{{oracleRo.status}}</td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr class="test">
+              <td>ibm-mq</td>
+              <td [ngClass]="{
+                'text-success': ibmMq.status == 'up', 
+                'text-danger': ibmMq.status == 'down' || ibmMq.status == 'out_of_service', 
+                'text-secondary': ibmMq.status == 'suspended',
+                'text-warning': ibmMq.status == 'partial',
+                'text-muted': ibmMq.status == 'unknown'}">{{ ibmMq.status }}</td>
+              <td>
+                <table>
+                  <tr>
+                    <td>ibm-mq-local</td>
+                    <td [ngClass]="{
+                      'text-success': ibmMqLocal.status == 'up', 
+                      'text-danger': ibmMqLocal.status == 'down' || ibmMqLocal.status == 'out_of_service',
+                      'text-secondary': ibmMqLocal.status == 'suspended',
+                      'text-warning': ibmMqLocal.status == 'partial',
+                      'text-muted': ibmMqLocal.status == 'unknown'}">{{ibmMqLocal.status}}</td>
+                  </tr>
+                  <tr>
+                    <td>ibm-mq-remote</td>
+                    <td [ngClass]="{
+                      'text-success': ibmMqRemote.status == 'up', 
+                      'text-danger': ibmMqRemote.status == 'down' || ibmMqRemote.status == 'out_of_service', 
+                      'text-secondary': ibmMqRemote.status == 'suspended',
+                      'text-warning': ibmMqRemote.status == 'partial',
+                      'text-muted': ibmMqRemote.status == 'unknown'}">{{ibmMqRemote.status}}</td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr class="test">
+              <td>hsm</td>
+              <td [ngClass]="{
+              'text-success': hsm.status == 'up', 
+              'text-danger': hsm.status == 'down' || hsm.status == 'out_of_service',  
+              'text-secondary': hsm.status == 'suspended',
+              'text-warning': hsm.status == 'partial',
+              'text-muted': hsm.status == 'unknown'}">{{ hsm.status }}</td>
+            </tr>
+            <tr class="test">
+              <td>ldap</td>
+              <td [ngClass]="{
+                'text-success': ldap.status == 'up', 
+                'text-danger': ldap.status == 'down' || ldap.status == 'out_of_service', 
+                'text-secondary': ldap.status == 'suspended',
+                'text-warning': ldap.status == 'partial',
+                'text-muted': ldap.status == 'unknown'}">{{ ldap.status }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
